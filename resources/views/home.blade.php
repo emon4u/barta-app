@@ -1,0 +1,1 @@
+<h2 style="text-align: center; padding: 50px">Barta App Home Page</h2>

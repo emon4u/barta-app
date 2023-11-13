@@ -4,10 +4,19 @@
 
 @section('auth_main_content')
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        @if ($errors->any())
+            <ul>
+                @foreach ($errors->all() as $error )
+                    <li class="text-red-500">{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
         <form
                 class="space-y-6"
-                action="#"
+                action="{{ route('register') }}"
                 method="POST">
+            @csrf
+
             <!-- First Name -->
             <div>
                 <label
@@ -22,6 +31,7 @@
                             type="text"
                             autocomplete="first_name"
                             placeholder="Muhammad"
+                            value="{{old('first_name')}}"
                             required
                             class="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"/>
                 </div>
@@ -41,6 +51,7 @@
                             type="text"
                             autocomplete="last_name"
                             placeholder="Alp Arslan"
+                            value="{{old('last_name')}}"
                             required
                             class="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"/>
                 </div>
@@ -60,6 +71,7 @@
                             type="text"
                             autocomplete="username"
                             placeholder="alparslan1029"
+                            value="{{old('username')}}"
                             required
                             class="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"/>
                 </div>
@@ -79,6 +91,7 @@
                             type="email"
                             autocomplete="email"
                             placeholder="alp.arslan@mail.com"
+                            value="{{old('email')}}"
                             required
                             class="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"/>
                 </div>

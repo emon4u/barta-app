@@ -4,10 +4,24 @@
 
 @section('auth_main_content')
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        @if (session('register-success'))
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 mb-5 rounded" role="alert">
+                {{ session('register_success') }}
+            </div>
+        @endif
+
+        @error('login_fail')
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mb-5 rounded" role="alert">
+            {{ $message }}
+        </div>
+        @enderror
+
         <form
                 class="space-y-6"
-                action="#"
+                action="{{ route('login') }}"
                 method="POST">
+            @csrf
+
             <div>
                 <label
                         for="email"

@@ -32,6 +32,8 @@ class UserController extends Controller
 
         if ($user) {
             return redirect('/login')->with('register_success', 'Registration successful! Please login.');
+        } else {
+            return redirect('/register');
         }
     }
 

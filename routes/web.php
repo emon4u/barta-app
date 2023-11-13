@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('home');
     });
+
+    Route::get('/profile', [ProfileController::class, 'viewProfile'])->name('profile');
+    Route::get('/edit-profile', [ProfileController::class, 'editProfile'])->name('edit-profile');
+    Route::patch('/edit-profile', [ProfileController::class, 'updateProfile']);
 
     Route::get('logout', [UserController::class, 'destroy'])->name('logout');
 });

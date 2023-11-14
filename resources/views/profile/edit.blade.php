@@ -17,6 +17,20 @@
                 </p>
 
                 <div class="mt-10 border-b border-gray-900/10 pb-12">
+                    @if ($errors->any())
+                        <ul class="mb-3">
+                            @foreach ($errors->all() as $error )
+                                <li class="text-red-500">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+
+                    @if (session('update_error'))
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mb-5 rounded" role="alert">
+                            {{ session('update_error') }}
+                        </div>
+                    @endif
+
                     <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                         <div class="sm:col-span-3">
                             <label for="first_name" class="block text-sm font-medium leading-6 text-gray-900">
@@ -69,7 +83,22 @@
                                 />
                             </div>
                         </div>
-
+                        <div class="col-span-full">
+                            <label for="username" class="block text-sm font-medium leading-6 text-gray-900">
+                                Username
+                            </label>
+                            <div class="mt-2">
+                                <input
+                                        id="username"
+                                        name="username"
+                                        type="text"
+                                        autocomplete="username"
+                                        placeholder="alparslan1029"
+                                        value="{{$user->username}}"
+                                        required
+                                        class="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"/>
+                            </div>
+                        </div>
                         <div class="col-span-full">
                             <label for="password" class="block text-sm font-medium leading-6 text-gray-900">
                                 Password

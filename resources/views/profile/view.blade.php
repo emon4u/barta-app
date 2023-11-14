@@ -2,6 +2,12 @@
 @section('page_title', $user->first_name .' '. $user->last_name . ' Profile')
 
 @section('app_content')
+    @if (session('update_success'))
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 mb-5 rounded" role="alert">
+            {{ session('update_success') }}
+        </div>
+    @endif
+
     <section
             class="bg-white border-2 p-8 border-gray-800 rounded-xl min-h-[400px] space-y-8 flex items-center flex-col justify-center">
         <!-- Profile Info -->

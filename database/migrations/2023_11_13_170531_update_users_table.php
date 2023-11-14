@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::table('users', function (Blueprint $table) {
             $table->renameColumn('name', 'username');
-
+            $table->unique('username');
             $table->string('first_name')->after('password');
             $table->string('last_name')->after('first_name');
             $table->text('bio')->after('last_name')->nullable();
@@ -26,6 +26,7 @@ return new class extends Migration {
     {
         Schema::table('users', function (Blueprint $table) {
             $table->renameColumn('username', 'name');
+            $table->dropUnique('users_username_unique');
             $table->dropColumn(['first_name', 'last_name', 'bio']);
         });
     }

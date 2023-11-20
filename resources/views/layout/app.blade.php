@@ -42,15 +42,12 @@
                                 <button
                                         @click="open = !open"
                                         type="button"
-                                        class="flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+                                        class="text-gray-900 hover:text-white border-2 border-gray-800 hover:bg-gray-900 focus:ring-2 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-1.5 text-center"
                                         id="user-menu-button"
                                         aria-expanded="false"
                                         aria-haspopup="true">
                                     <span class="sr-only">Open user menu</span>
-                                    <img
-                                            class="h-8 w-8 rounded-full"
-                                            src="https://avatars.githubusercontent.com/u/831997"
-                                            alt="Ahmed Shamim Hasan Shaon"/>
+                                    Profile
                                 </button>
                             </div>
 
@@ -95,7 +92,7 @@
         </nav>
     </header>
 
-    <main class="container max-w-2xl mx-auto space-y-8 mt-8 px-2 pt-16 pb-16 min-h-100">
+    <main class="container max-w-2xl mx-auto space-y-8 mt-8 px-2 md:px-0 min-h-100">
         @yield( 'app_content' )
     </main>
 

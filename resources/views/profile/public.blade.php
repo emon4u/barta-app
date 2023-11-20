@@ -3,26 +3,8 @@
 @section('page_title', $user->first_name .' '. $user->last_name . ' Profile')
 
 @section('app_content')
-    @if (session('update_success'))
-        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 mb-5 rounded" role="alert">
-            {{ session('update_success') }}
-        </div>
-    @endif
-
-    @if (session('post_success'))
-        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 mb-5 rounded" role="alert">
-            {{ session('post_success') }}
-        </div>
-    @endif
-
-    @if (session('post_failed'))
-        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mb-5 rounded" role="alert">
-            {{ session('post_failed') }}
-        </div>
-    @endif
-
     <section
-            class="bg-white border-2 p-8 border-gray-800 rounded-xl min-h-[320px] space-y-8 flex items-center flex-col justify-center">
+            class="bg-white border-2 p-8 border-gray-800 rounded-xl min-h-[300px] space-y-8 flex items-center flex-col justify-center">
         <div class="flex gap-4 justify-center flex-col text-center items-center">
             <div>
                 <h1 class="font-bold md:text-2xl">{{$user->first_name .' '. $user->last_name}}</h1>
@@ -40,41 +22,7 @@
                 <p class="text-gray-600">Comments</p>
             </div>
         </div>
-
-        <a href="{{route('edit-profile')}}" type="button"
-           class="-m-2 flex gap-2 items-center rounded-full px-4 py-2 font-semibold bg-gray-100 hover:bg-gray-200 text-gray-700">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                 stroke="currentColor" class="w-5 h-5">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
-            </svg>
-
-            Edit Profile
-        </a>
     </section>
-
-    <form method="POST" enctype="multipart/form-data"
-          class="bg-white border-2 border-black rounded-lg shadow mx-auto max-w-none px-4 py-5 sm:px-6 space-y-4"
-          action="{{ route('posts.store') }}">
-        <div>
-            <div class="flex items-start /space-x-3/">
-                <div class="text-gray-700 font-normal w-full">
-                    @csrf
-                    <textarea
-                            class="block w-full p-2 pt-2 text-gray-900 rounded-lg border-none outline-none focus:ring-0 focus:ring-offset-0"
-                            name="post_content" rows="2" placeholder="What's going on?"></textarea>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="flex items-center justify-end">
-                <button type="submit"
-                        class="flex gap-2 text-xs items-center rounded-full px-4 py-2 font-semibold bg-gray-800 hover:bg-black text-white">
-                    Post
-                </button>
-            </div>
-        </div>
-    </form>
 
     <section id="newsfeed" class="space-y-6">
         @foreach($userPosts as $post)
